@@ -5,7 +5,7 @@ from crewai.project import CrewBase, agent, crew, task
 # from busca_historias.tools.custom_tool import MyCustomTool
 
 # Check our tools documentations for more information on how to use them
-# from crewai_tools import SerperDevTool
+from crewai_tools import SerperDevTool
 
 @CrewBase
 class BuscaHistorias():
@@ -15,17 +15,24 @@ class BuscaHistorias():
 	tasks_config = 'config/tasks.yaml'
 
 	@agent
-	def researcher(self) -> Agent:
+	def web_search_expert(self) -> Agent:
 		return Agent(
-			config=self.agents_config['researcher'],
-			# tools=[MyCustomTool()], # Example of custom tool, loaded on the beginning of file
+			config=self.agents_config['web_search_expert'],
+			tools=[SerperDevTool()], 
 			verbose=True
 		)
 
 	@agent
-	def reporting_analyst(self) -> Agent:
+	def validation_expert(self) -> Agent:
 		return Agent(
-			config=self.agents_config['reporting_analyst'],
+			config=self.agents_config['validation_expert'],
+			verbose=True
+		)
+
+	@agent
+	def project_manager(self) -> Agent:
+		return Agent(
+			config=self.agents_config['project_manager'],
 			verbose=True
 		)
 

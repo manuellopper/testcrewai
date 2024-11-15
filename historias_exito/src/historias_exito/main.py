@@ -5,49 +5,40 @@ from pydantic import BaseModel
 
 from crewai.flow.flow import Flow, listen, start
 
-from .crews.poem_crew.poem_crew import PoemCrew
+#from .crews.poem_crew.poem_crew import PoemCrew --->>>> CAMBIAR
 
+class SuccessStoryInfo(BaseModel):
+    stories_number: int
+    technology: str
+    process_scope: str
+    company_sector: str
+    company_country: str
 
-class PoemState(BaseModel):
-    sentence_count: int = 1
-    poem: str = ""
-
-
-class PoemFlow(Flow[PoemState]):
+class SuccessStoryFlow(Flow[SuccessStoryInfo]):
 
     @start()
-    def generate_sentence_count(self):
-        print("Generating sentence count")
-        self.state.sentence_count = randint(1, 5)
+    def research_sources(self):
+        #first fuction content
 
-    @listen(generate_sentence_count)
-    def generate_poem(self):
-        print("Generating poem")
-        result = (
-            PoemCrew()
-            .crew()
-            .kickoff(inputs={"sentence_count": self.state.sentence_count})
-        )
+    
 
-        print("Poem generated", result.raw)
-        self.state.poem = result.raw
-
-    @listen(generate_poem)
-    def save_poem(self):
-        print("Saving poem")
-        with open("poem.txt", "w") as f:
-            f.write(self.state.poem)
-
-
-def kickoff():
-    poem_flow = PoemFlow()
-    poem_flow.kickoff()
+def kickoff(start_info):
+    
+    stories_flow = SuccessStoryFlow()
+    stories_flow.kickoff(start_info)
 
 
 def plot():
-    poem_flow = PoemFlow()
-    poem_flow.plot()
+    stories_flow = SuccessStoryFlow()
+    stories_flow.plot()
 
 
 if __name__ == "__main__":
-    kickoff()
+    context_variables = SuccessStoryInfo(
+        stories_number=2,
+        technology="Artificial Intelligence",
+        process_scope="Manufacturing process",
+        company_sector="Automotion",
+        company_country="Spain"
+    )
+    kickoff(context_variables)
