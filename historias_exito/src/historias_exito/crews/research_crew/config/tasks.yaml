@@ -21,4 +21,4 @@ success_stories_research_task: ### INCLUIR LOS PARAMETROS DE ENTRADA
       
     Make sure that there are not duplicated success stories.
 
-  agent: project_manager
+  #agent: project_manager
