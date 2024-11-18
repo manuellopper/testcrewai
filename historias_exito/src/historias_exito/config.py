@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional
+from crewai import LLM
+
 
 
 class SuccessStoryReqInfo(BaseModel):
@@ -29,4 +31,8 @@ CONTEXT_VARIABLES = {
         "company_sector":"Automotion",
         "company_country":"Spain"
 }
-    
+
+llm = LLM(
+    model="gpt-4o",
+    temperature=0
+)

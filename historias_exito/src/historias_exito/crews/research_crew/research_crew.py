@@ -6,7 +6,8 @@ from crewai.project import CrewBase, agent, crew, task
 
 # Check our tools documentations for more information on how to use them
 from crewai_tools import SerperDevTool
-from src.historias_exito.config import SuccessStoryList, SuccessStory, SuccessStoryReqInfo
+from src.historias_exito.config import SuccessStoryList,llm, SuccessStory, SuccessStoryReqInfo
+
 
 @CrewBase
 class ResearchCrew():
@@ -24,6 +25,7 @@ class ResearchCrew():
 			cache=True,
 			use_system_prompt=True,
 			allow_delegation=False,
+			llm=llm,
 		)
 
 	@agent
@@ -34,6 +36,7 @@ class ResearchCrew():
 			cache=True,
 			use_system_prompt=True,
 			allow_delegation=False,
+			llm=llm,
 		)
 
 	@agent
@@ -44,7 +47,7 @@ class ResearchCrew():
 			cache=True,
 			use_system_prompt=True,
 			allow_delegation=True,
-			
+			llm=llm,			
 		)
 
 	@task
