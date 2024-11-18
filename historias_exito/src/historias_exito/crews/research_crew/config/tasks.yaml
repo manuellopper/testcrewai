@@ -7,7 +7,7 @@ success_stories_research_task: ### INCLUIR LOS PARAMETROS DE ENTRADA
     - Socpe of the process where digital solutions have been implemented: {process_scope}
     - Sector of the company where the digital solutions have been implemented: {company_sector}
     - Country where the digital solution have been implemented: {company_country}    
-    Make sure to validate get the URL of the source where the success story can be found.
+    Make sure to get the URL of the source where the success story can be found. There is no need to validate the veracity of the source.
   expected_output: >
     A structured list of success stories containing:
     - Short description: Short description of the success story
