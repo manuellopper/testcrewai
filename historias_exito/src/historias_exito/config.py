@@ -14,11 +14,11 @@ class SuccessStoryReqInfo(BaseModel):
 
 class SuccessStory(BaseModel):
     short_description: str
-    url: str
+    url: Optional[str]
     company: str
     integrator: Optional[List[str]] = []
     software_manufacturer: Optional[List[str]] = []
-    full_article: str
+    full_article: Optional[str]
     valid: bool
 
 class SuccessStoryList(BaseModel):
@@ -28,8 +28,8 @@ CONTEXT_VARIABLES = {
         "stories_number":2,
         "technology":"Artificial Intelligence",
         "process_scope":"Manufacturing process",
-        "company_sector":"Automotion",
-        "company_country":"Spain"
+        "company_sector":"pharmaceutical",
+        "company_country":"Any"
 }
 
 llm = LLM(

@@ -16,7 +16,9 @@ class SuccessStoryFlow(Flow):
 
     @start()
     def research_sources(self):
-        return ResearchCrew().crew().kickoff(self.input_variables).pydantic #CORREGIR LO QUE SE LE PASA
+        result=ResearchCrew().crew().kickoff(self.input_variables).pydantic #CORREGIR LO QUE SE LE PASA
+        print(result)
+        #return 
 
 
 def kickoff():
