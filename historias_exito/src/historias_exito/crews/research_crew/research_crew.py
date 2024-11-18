@@ -52,11 +52,13 @@ class ResearchCrew():
 	@crew
 	def crew(self) -> Crew:
 		"""Creates the ResearchCrew crew"""
+		print(self.agents)
+		print(self.tasks)
 		return Crew(
 			agents=self.agents, # Automatically created by the @agent decorator
 			tasks=self.tasks, # Automatically created by the @task decorator			
-			verbose=True,
-			manager_agent=project_manager,
+			verbose=True,			
+			manager_agent=self.agents['project_manager'],
     		process=Process.hierarchical,
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
 		)
