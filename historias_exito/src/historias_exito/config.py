@@ -22,4 +22,3 @@ class SuccessStory(BaseModel):
 class SuccessStoryList(BaseModel):
     stories: List[SuccessStory]
 
-class SuccessStoryFlow(Flow[SuccessStoryReqInfo]):

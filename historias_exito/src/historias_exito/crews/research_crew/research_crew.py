@@ -6,7 +6,7 @@ from crewai.project import CrewBase, agent, crew, task
 
 # Check our tools documentations for more information on how to use them
 from crewai_tools import SerperDevTool
-from src.historias_exito.config import SuccessStoryList, SuccessStoryList 
+from src.historias_exito.config import SuccessStoryList, SuccessStory, SuccessStoryReqInfo
 
 @CrewBase
 class ResearchCrew():
