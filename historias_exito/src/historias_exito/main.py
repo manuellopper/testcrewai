@@ -5,29 +5,27 @@ from pydantic import BaseModel
 from typing import List, Optional
 
 from crewai.flow.flow import Flow, listen, start
-from .config import SuccessStoryReqInfo, SuccessStory,SuccessStoryList
+from .config import SuccessStoryReqInfo, SuccessStory,SuccessStoryList, CONTEXT_VARIABLES
 from .crews.research_crew.research_crew import ResearchCrew 
 
 
 
 class SuccessStoryFlow(Flow[SuccessStoryReqInfo]):
 
+    input_variables = CONTEXT_VARIABLES
+
     @start()
     def research_sources(self):
-        return ResearchCrew().crew().kickoff(self.state).pydantic #CORREGIR LO QUE SE LE PASA
+        return ResearchCrew().crew().kickoff(self.input_variables).pydantic #CORREGIR LO QUE SE LE PASA
 
 
 def kickoff():
-    context_variables = SuccessStoryReqInfo(
-        stories_number=2,
-        technology="Artificial Intelligence",
-        process_scope="Manufacturing process",
-        company_sector="Automotion",
-        company_country="Spain"
-    )
-    print(context_variables.model_dump())
+    
+    input_variables = CONTEXT_VARIABLES
+
+    print(input_variables.model_dump())
     stories_flow = SuccessStoryFlow()
-    stories_flow.kickoff(context_variables)
+    stories_flow.kickoff()
 
 
 def plot():

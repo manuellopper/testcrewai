@@ -22,3 +22,10 @@ class SuccessStory(BaseModel):
 class SuccessStoryList(BaseModel):
     stories: List[SuccessStory]
 
+CONTEXT_VARIABLES = SuccessStoryReqInfo(
+        stories_number=2,
+        technology="Artificial Intelligence",
+        process_scope="Manufacturing process",
+        company_sector="Automotion",
+        company_country="Spain",
+    )
