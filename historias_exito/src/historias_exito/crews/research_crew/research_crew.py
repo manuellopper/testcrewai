@@ -26,7 +26,7 @@ class ResearchCrew():
 			cache=True,
 			use_system_prompt=True,
 			allow_delegation=False,
-			llm=llm,
+			#llm=llm,
 		)
 
 	@agent
@@ -37,7 +37,7 @@ class ResearchCrew():
 			cache=True,
 			use_system_prompt=True,
 			allow_delegation=False,
-			llm=llm,
+			#llm=llm,
 		)
 
 	#@agent
