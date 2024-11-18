@@ -10,7 +10,7 @@ from .crews.research_crew.research_crew import ResearchCrew
 
 
 
-class SuccessStoryFlow(Flow[SuccessStoryReqInfo]):
+class SuccessStoryFlow(Flow):
 
     input_variables = CONTEXT_VARIABLES
 
