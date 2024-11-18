@@ -33,6 +33,6 @@ CONTEXT_VARIABLES = {
 }
 
 llm = LLM(
-    model="gpt-4o",
+    model="gpt-4",
     temperature=0
 )
