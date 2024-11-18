@@ -55,7 +55,7 @@ class ResearchCrew():
 		print(self.agents)
 		print(self.tasks)
 		return Crew(
-			agents=self.agents, # Automatically created by the @agent decorator
+			agents=self.agents[:2], # Automatically created by the @agent decorator
 			tasks=self.tasks, # Automatically created by the @task decorator			
 			verbose=True,			
 			manager_agent=self.agents[2],
