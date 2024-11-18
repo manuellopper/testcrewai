@@ -58,7 +58,7 @@ class ResearchCrew():
 			agents=self.agents, # Automatically created by the @agent decorator
 			tasks=self.tasks, # Automatically created by the @task decorator			
 			verbose=True,			
-			manager_agent=self.agents['project_manager'],
+			manager_agent=self.agents[2],
     		process=Process.hierarchical,
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
 		)
