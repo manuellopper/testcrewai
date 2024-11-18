@@ -17,10 +17,17 @@ class SuccessStoryFlow(Flow[SuccessStoryReqInfo]):
         return ResearchCrew().crew().kickoff(self.state).pydantic #CORREGIR LO QUE SE LE PASA
 
 
-def kickoff(start_info):
-    
+def kickoff():
+    context_variables = SuccessStoryReqInfo(
+        stories_number=2,
+        technology="Artificial Intelligence",
+        process_scope="Manufacturing process",
+        company_sector="Automotion",
+        company_country="Spain"
+    )
+    print(context_variables.model_dump())
     stories_flow = SuccessStoryFlow()
-    stories_flow.kickoff(start_info)
+    stories_flow.kickoff(context_variables)
 
 
 def plot():
@@ -29,11 +36,5 @@ def plot():
 
 
 if __name__ == "__main__":
-    context_variables = SuccessStoryReqInfo(
-        stories_number=2,
-        technology="Artificial Intelligence",
-        process_scope="Manufacturing process",
-        company_sector="Automotion",
-        company_country="Spain"
-    )
-    kickoff(context_variables)
+    
+    kickoff()
