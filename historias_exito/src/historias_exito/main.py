@@ -23,7 +23,7 @@ def kickoff():
     
     input_variables = CONTEXT_VARIABLES
 
-    print(input_variables.model_dump())
+    print(input_variables)
     stories_flow = SuccessStoryFlow()
     stories_flow.kickoff()
 
