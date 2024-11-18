@@ -1,5 +1,6 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+from langchain_openai import ChatOpenAI
 
 # Uncomment the following line to use an example of a custom tool
 # from research_crew.tools.custom_tool import MyCustomTool
@@ -69,7 +70,8 @@ class ResearchCrew():
 			verbose=True,
 			respect_context_window=True,
 			process=Process.hierarchical,
-			manager_agent=self.agents[2],
+			#manager_agent=self.agents[2],
+			manager_llm=ChatOpenAI(temperature=0, model="gpt-4"),
 			memory=True,
 			planning=True,
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
