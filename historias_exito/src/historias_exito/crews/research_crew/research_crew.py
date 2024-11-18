@@ -40,16 +40,16 @@ class ResearchCrew():
 			llm=llm,
 		)
 
-	@agent
-	def project_manager(self) -> Agent:
-		return Agent(
-			config=self.agents_config['project_manager'],
-			verbose=True,
-			cache=True,
-			use_system_prompt=True,
-			allow_delegation=True,
-			llm=llm,			
-		)
+	#@agent
+	#def project_manager(self) -> Agent:
+		# return Agent(
+		# 	config=self.agents_config['project_manager'],
+		# 	verbose=True,
+		# 	cache=True,
+		# 	use_system_prompt=True,
+		# 	allow_delegation=True,
+		# 	llm=llm,			
+		# )
 
 	@task
 	def success_stories_research_task(self) -> Task:
