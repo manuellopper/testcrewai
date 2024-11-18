@@ -73,6 +73,6 @@ class ResearchCrew():
 			#manager_agent=self.agents[2],
 			manager_llm=ChatOpenAI(temperature=0, model="gpt-4"),
 			memory=True,
-			planning=True,
+			#planning=True,
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
 		)
