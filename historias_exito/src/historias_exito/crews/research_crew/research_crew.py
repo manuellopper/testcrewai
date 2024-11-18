@@ -21,6 +21,8 @@ class ResearchCrew():
 			config=self.agents_config['web_search_expert'],
 			tools=[SerperDevTool()], 
 			verbose=True,
+			cache=True,
+			use_system_prompt=True,
 			allow_delegation=False,
 		)
 
@@ -29,6 +31,8 @@ class ResearchCrew():
 		return Agent(
 			config=self.agents_config['validation_expert'],
 			verbose=True,
+			cache=True,
+			use_system_prompt=True,
 			allow_delegation=False,
 		)
 
@@ -37,6 +41,8 @@ class ResearchCrew():
 		return Agent(
 			config=self.agents_config['project_manager'],
 			verbose=True,
+			cache=True,
+			use_system_prompt=True,
 			allow_delegation=True,
 			
 		)
@@ -55,10 +61,13 @@ class ResearchCrew():
 		print(self.agents)
 		print(self.tasks)
 		return Crew(
-			agents=self.agents[:2], # Automatically created by the @agent decorator
+			agents=[self.agents[0], self.agents[1]], # Automatically created by the @agent decorator
 			tasks=self.tasks, # Automatically created by the @task decorator			
-			verbose=True,			
+			verbose=True,
+			respect_context_window=True,
+			process=Process.hierarchical,
 			manager_agent=self.agents[2],
-    		process=Process.hierarchical,
+			memory=True,
+			planning=True,
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
 		)
