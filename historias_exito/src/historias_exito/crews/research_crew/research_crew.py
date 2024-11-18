@@ -5,7 +5,8 @@ from crewai.project import CrewBase, agent, crew, task
 # from research_crew.tools.custom_tool import MyCustomTool
 
 # Check our tools documentations for more information on how to use them
-# from crewai_tools import SerperDevTool
+from crewai_tools import SerperDevTool
+from src.historias_exito.config import SuccessStoryList, SuccessStoryList 
 
 @CrewBase
 class ResearchCrew():
@@ -15,40 +16,47 @@ class ResearchCrew():
 	tasks_config = 'config/tasks.yaml'
 
 	@agent
-	def researcher(self) -> Agent:
+	def web_search_expert(self) -> Agent:
 		return Agent(
-			config=self.agents_config['researcher'],
-			# tools=[MyCustomTool()], # Example of custom tool, loaded on the beginning of file
-			verbose=True
+			config=self.agents_config['web_search_expert'],
+			tools=[SerperDevTool()], 
+			verbose=True,
+			allow_delegation=False,
 		)
 
 	@agent
-	def reporting_analyst(self) -> Agent:
+	def validation_expert(self) -> Agent:
 		return Agent(
-			config=self.agents_config['reporting_analyst'],
-			verbose=True
+			config=self.agents_config['validation_expert'],
+			verbose=True,
+			allow_delegation=False,
+		)
+
+	@agent
+	def project_manager(self) -> Agent:
+		return Agent(
+			config=self.agents_config['project_manager'],
+			verbose=True,
+			allow_delegation=True,
+			
 		)
 
 	@task
-	def research_task(self) -> Task:
+	def success_stories_research_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['research_task'],
+			config=self.tasks_config['success_stories_research_task'],
+			output_pydantic=SuccessStoryList,
 		)
 
-	@task
-	def reporting_task(self) -> Task:
-		return Task(
-			config=self.tasks_config['reporting_task'],
-			output_file='report.md'
-		)
-
+	
 	@crew
 	def crew(self) -> Crew:
 		"""Creates the ResearchCrew crew"""
 		return Crew(
 			agents=self.agents, # Automatically created by the @agent decorator
-			tasks=self.tasks, # Automatically created by the @task decorator
-			process=Process.sequential,
+			tasks=self.tasks, # Automatically created by the @task decorator			
 			verbose=True,
+			manager_agent=project_manager,
+    		process=Process.hierarchical,
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
 		)

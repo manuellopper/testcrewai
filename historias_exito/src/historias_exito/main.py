@@ -2,25 +2,20 @@
 from random import randint
 
 from pydantic import BaseModel
+from typing import List, Optional
 
 from crewai.flow.flow import Flow, listen, start
+from .config import SuccessStoryReqInfo, SuccessStory,SuccessStoryList
+from .crews.research_crew.research_crew import ResearchCrew 
 
-#from .crews.poem_crew.poem_crew import PoemCrew --->>>> CAMBIAR
 
-class SuccessStoryInfo(BaseModel):
-    stories_number: int
-    technology: str
-    process_scope: str
-    company_sector: str
-    company_country: str
 
-class SuccessStoryFlow(Flow[SuccessStoryInfo]):
+class SuccessStoryFlow(Flow[SuccessStoryReqInfo]):
 
     @start()
     def research_sources(self):
-        #first fuction content
+        return ResearchCrew().crew().kickoff(self.state).pydantic #CORREGIR LO QUE SE LE PASA
 
-    
 
 def kickoff(start_info):
     
@@ -34,7 +29,7 @@ def plot():
 
 
 if __name__ == "__main__":
-    context_variables = SuccessStoryInfo(
+    context_variables = SuccessStoryReqInfo(
         stories_number=2,
         technology="Artificial Intelligence",
         process_scope="Manufacturing process",
