@@ -14,7 +14,7 @@ class SuccessStory(BaseModel):
 class SuccessStoriesList(BaseModel):
     stories: List[SuccessStory]
 
-CONTEXT_VARIABLES = { 
+INPUT_VARIABLES = { 
         "stories_number":2,
         "technology":"Artificial Intelligence",
         "process_scope":"Manufacturing process",
