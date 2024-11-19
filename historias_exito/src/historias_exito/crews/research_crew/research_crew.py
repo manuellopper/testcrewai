@@ -40,17 +40,6 @@ class ResearchCrew():
 			llm=llm,
 		)
 
-	#@agent
-	#def project_manager(self) -> Agent:
-		# return Agent(
-		# 	config=self.agents_config['project_manager'],
-		# 	verbose=True,
-		# 	cache=True,
-		# 	use_system_prompt=True,
-		# 	allow_delegation=True,
-		# 	llm=llm,			
-		# )
-
 	@task
 	def success_stories_research_task(self) -> Task:
 		return Task(
@@ -61,18 +50,14 @@ class ResearchCrew():
 	
 	@crew
 	def crew(self) -> Crew:
-		"""Creates the ResearchCrew crew"""
-		print(self.agents)
-		print(self.tasks)
+		"""Creates the ResearchCrew crew"""		
 		return Crew(
-			agents=[self.agents[0], self.agents[1]], # Automatically created by the @agent decorator
+			agents=self.agents, # Automatically created by the @agent decorator
 			tasks=self.tasks, # Automatically created by the @task decorator			
 			verbose=True,
 			respect_context_window=True,
-			process=Process.hierarchical,
-			#manager_agent=self.agents[2],
-			manager_llm=ChatOpenAI(temperature=0, model="gpt-4"),
-			memory=True,
-			#planning=True,
-			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
+			process=Process.hierarchical,			
+			manager_llm=ChatOpenAI(temperature=0, model="gpt-4o-mini"),
+			memory=True,		
+			
 		)
