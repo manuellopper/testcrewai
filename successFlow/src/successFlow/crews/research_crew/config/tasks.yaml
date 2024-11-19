@@ -1,13 +1,17 @@
-success_stories_research_task: ### INCLUIR LOS PARAMETROS DE ENTRADA
+success_stories_research_task: 
   description: >
     Conduct a comprehensive web search to identify success stories of digital technology implementations
     that meet all the following criteria:    
     - Minimum success stories found that meet all the requirements: {stories_number}
     - Technology or kind of digital solution implemented: {technology}
-    - Socpe of the process where digital solutions have been implemented: {process_scope}
+    - Scope of the process where digital solutions have been implemented: {process_scope}
     - Sector of the company where the digital solutions have been implemented: {company_sector}
     - Country where the digital solution have been implemented: {company_country}    
     Make sure to get the URL of the source where the success story can be found. There is no need to validate the veracity of the source.
+
+    Take this feedback from the validation process into account when selecting the success stories for the next research task. If a success story is valid, keept it. If not, remove it from the list and find another one:    
+    {feedback}
+    
   expected_output: >
     A structured list of success stories containing:
     - Short description: Short description of the success story
@@ -15,9 +19,8 @@ success_stories_research_task: ### INCLUIR LOS PARAMETROS DE ENTRADA
     - Company: Name of the implementing company
     - Integrator: list of software integrators names, if found
     - Software Manufacturer: list of software manufacturers names, if found.
-    - Valid: boolean, true or false. If the success story meet all requiered criteria. 
-    - Full article: the full article where the success story is decribed
       
     Make sure that there are not duplicated success stories.
 
-  #agent: project_manager
+  agent: web_search_expert
+

@@ -1,0 +1,21 @@
+success_stories_validation_task: 
+  description: >
+    Conduct a comprehensive validation of the success stories identified in the previous research task, attending to the following criteria:     
+    - Minimum success stories found that meet all the requirements: {stories_number}
+    - Not dupliacted success stories
+    - Technology or kind of digital solution implemented: {technology}
+    - Scope of the process where digital solutions have been implemented: {process_scope}
+    - Sector of the company where the digital solutions have been implemented: {company_sector}
+    - Country where the digital solution have been implemented (optional): {company_country}    
+    Generate a comprehensive feedback for each success story in order to improve the output of the research process, if needed.
+  expected_output: >
+    A structured list of success stories containing:
+    - Short description: Short description of the success story
+    - URL: URL where the success story is described
+    - Company: Name of the implementing company
+    - Integrator: list of software integrators names, if found
+    - Software Manufacturer: list of software manufacturers names, if found.
+    - Valid: boolean, true or false. If the success story meet all requiered criteria. 
+    - Feedback: feedback to be provided to the researcher.
+      
+  agent: validation_expert

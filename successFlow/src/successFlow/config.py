@@ -2,26 +2,16 @@ from pydantic import BaseModel
 from typing import List, Optional
 from crewai import LLM
 
-
-
-class SuccessStoryReqInfo(BaseModel):
-    stories_number: int
-    technology: str
-    process_scope: str
-    company_sector: str
-    company_country: str
-
-
 class SuccessStory(BaseModel):
     short_description: str
-    url: Optional[str]
+    url: str
     company: str
     integrator: Optional[List[str]] = []
-    software_manufacturer: Optional[List[str]] = []
-    full_article: Optional[str]
+    software_manufacturer: Optional[List[str]] = []    
     valid: bool
+    feedback: str
 
-class SuccessStoryList(BaseModel):
+class SuccessStoriesList(BaseModel):
     stories: List[SuccessStory]
 
 CONTEXT_VARIABLES = { 
