@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 import json
 
-from crewai.flow.flow import Flow, listen, start
+from crewai.flow.flow import Flow, listen, start, router
 from .config import INPUT_VARIABLES, SuccessStoriesList
 from .crews.research_crew.research_crew import ResearchCrew 
 from .crews.validation_crew.validation_crew import ValidationCrew 
