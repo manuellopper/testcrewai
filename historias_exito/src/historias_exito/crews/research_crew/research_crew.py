@@ -57,7 +57,7 @@ class ResearchCrew():
 			verbose=True,
 			respect_context_window=True,
 			process=Process.hierarchical,			
-			manager_llm=ChatOpenAI(temperature=0, model="gpt-4o-mini"),
+			manager_llm=ChatOpenAI(temperature=0, model="gpt-4"),
 			memory=True,		
 			
 		)
