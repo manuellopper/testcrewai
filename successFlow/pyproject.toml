@@ -1,7 +1,7 @@
 [project]
-name = "historias_exito"
+name = "successFlow"
 version = "0.1.0"
-description = "historias_exito using crewAI"
+description = "successFlow using crewAI"
 authors = [{ name = "Your Name", email = "you@example.com" }]
 requires-python = ">=3.10,<=3.13"
 dependencies = [
@@ -9,8 +9,8 @@ dependencies = [
 ]
 
 [project.scripts]
-kickoff = "historias_exito.main:kickoff"
-plot = "historias_exito.main:plot"
+kickoff = "successFlow.main:kickoff"
+plot = "successFlow.main:plot"
 
 [build-system]
 requires = ["hatchling"]
