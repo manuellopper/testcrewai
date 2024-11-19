@@ -58,6 +58,7 @@ class ResearchCrew():
 			respect_context_window=True,
 			process=Process.hierarchical,			
 			manager_llm=ChatOpenAI(temperature=0, model="gpt-4o"),
-			memory=True,		
+			memory=True,
+			planning= True,
 			
 		)
