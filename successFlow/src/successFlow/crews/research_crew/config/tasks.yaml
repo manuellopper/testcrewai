@@ -10,7 +10,7 @@ success_stories_research_task:
     Make sure to get the URL of the source where the success story can be found. There is no need to validate the veracity of the source.
 
     For the research task, take the feedback for each success story included in the following json information into account.  If a success story is valid, keept it. If not, remove it from the list and find another one:    
-    {success_stories}
+    {stories}
     
   expected_output: >
     A structured list of success stories containing:

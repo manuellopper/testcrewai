@@ -12,7 +12,7 @@ class SuccessStory(BaseModel):
     feedback: str
 
 class SuccessStoriesList(BaseModel):
-    stories: List[SuccessStory]
+    stories: List[SuccessStory] = []
 
 INPUT_VARIABLES = { 
         "stories_number":2,

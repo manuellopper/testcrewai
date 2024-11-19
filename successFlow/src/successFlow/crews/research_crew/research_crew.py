@@ -7,7 +7,7 @@ from crewai.project import CrewBase, agent, crew, task
 
 # Check our tools documentations for more information on how to use them
 from crewai_tools import SerperDevTool
-from src.successFlow.config import llm
+from src.successFlow.config import llm, SuccessStoriesList
 
 
 @CrewBase
@@ -29,7 +29,8 @@ class ResearchCrew():
 	@task
 	def success_stories_research_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['success_stories_research_task'],			
+			config=self.tasks_config['success_stories_research_task'],
+			output_pydantic=SuccessStoriesList,
 		)
 
 	

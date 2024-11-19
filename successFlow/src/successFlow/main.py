@@ -12,25 +12,28 @@ from .crews.validation_crew.validation_crew import ValidationCrew
 class SuccessStoryFlow(Flow):
 
     input_variables = INPUT_VARIABLES
-    lista_historias = SuccessStoriesList(stories=[])
+    stories_list = SuccessStoriesList()
 
     context_variables = {
         **INPUT_VARIABLES,
-        "success_stories": json.loads(lista_historias.model_dump_json())
+        "stories": [story.model_dump() for story in stories_list.stories]
     }
     
 
     @start("invalid_stories")
     def research_sources(self):
-        result=ResearchCrew().crew().kickoff(self.context_variables).pydantic # IMPORTANTE!! Hay que definir salida pydantic de SuccessStoriesList
-        self.context_variables["success_stories"] = json.loads(result.model_dump_json())
+        result=ResearchCrew().crew().kickoff(self.context_variables).pydantic 
+        self.context_variables["stories"] = [story.model_dump() for story in result.stories]
+        
         
           
 
     @router(research_sources)
     def router_stories_validation(self):
 
-        valid = True
+        
+        valid = all(story['valid'] for story in self.context_variables["stories"])
+        
         if valid:
             return "valid_stories"
         else:
@@ -38,9 +41,10 @@ class SuccessStoryFlow(Flow):
     
     @listen("valid_stories")
     def present_output(self):
-        print(json.dumps(self.context_variables["success_stories"], indent=2))
+        print(json.dumps(self.context_variables["stories"], indent=2))
+       
         with open('success_stories.json', 'w') as f:
-            json.dump(self.context_variables["success_stories"], f, indent=2)
+            json.dump(self.context_variables["stories"], f, indent=2)
 
 
 
