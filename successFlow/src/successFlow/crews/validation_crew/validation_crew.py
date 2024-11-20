@@ -9,7 +9,7 @@ from src.successFlow.config import SuccessStoriesList,llm
 
 
 @CrewBase
-class ValidationCrew():
+class ValidationCrew:
 	"""ValidationCrew crew"""
 
 	agents_config = 'config/agents.yaml'

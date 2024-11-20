@@ -24,6 +24,10 @@ class SuccessStoryFlow(Flow):
     def research_sources(self):
         result=ResearchCrew().crew().kickoff(self.context_variables).pydantic 
         self.context_variables["stories"] = [story.model_dump() for story in result.stories]
+        print("##End of research sources\n") 
+        print(json.dump(self.context_variables["stories"], f, indent=2))
+        
+              
         
         
           
@@ -31,7 +35,8 @@ class SuccessStoryFlow(Flow):
     @router(research_sources)
     def router_stories_validation(self):
 
-        
+        print("##Start router\n") 
+        print(json.dump(self.context_variables["stories"], f, indent=2))
         valid = all(story['valid'] for story in self.context_variables["stories"])
         
         if valid:

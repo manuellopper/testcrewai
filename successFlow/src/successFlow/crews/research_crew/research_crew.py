@@ -11,7 +11,7 @@ from src.successFlow.config import llm, SuccessStoriesList
 
 
 @CrewBase
-class ResearchCrew():
+class ResearchCrew:
 	"""ResearchCrew crew"""
 
 	agents_config = 'config/agents.yaml'
