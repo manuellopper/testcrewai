@@ -2,11 +2,18 @@
 from pydantic import BaseModel
 from typing import List, Optional
 import json
+import os
 
 from crewai.flow.flow import Flow, listen, start, router
 from .config import INPUT_VARIABLES, SuccessStoriesList
 from .crews.research_crew.research_crew import ResearchCrew 
 from .crews.validation_crew.validation_crew import ValidationCrew 
+
+from langtrace_python_sdk import langtrace
+
+api_key = os.getenv('LANGTRACE_API_KEY')
+
+langtrace.init(api_key=api_key)
 
 
 class SuccessStoryFlow(Flow):

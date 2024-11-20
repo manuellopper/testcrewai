@@ -1,0 +1,8 @@
+[project]
+name = "testcrewai"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "langtrace-python-sdk==3.3.7",
+]
