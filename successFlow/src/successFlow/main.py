@@ -27,7 +27,7 @@ class SuccessStoryFlow(Flow):
         print("##End of research sources\n") 
         self.context_variables["stories"] = [story.model_dump() for story in result.stories]
         
-        print(json.dump(self.context_variables["stories"], f, indent=2))
+        print(json.dumps(self.context_variables["stories"], indent=2))
         
               
         
