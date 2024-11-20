@@ -23,8 +23,9 @@ class SuccessStoryFlow(Flow):
     @start("invalid_stories")
     def research_sources(self):
         result=ResearchCrew().crew().kickoff(self.context_variables).pydantic 
-        self.context_variables["stories"] = [story.model_dump() for story in result.stories]
         print("##End of research sources\n") 
+        self.context_variables["stories"] = [story.model_dump() for story in result.stories]
+        
         print(json.dump(self.context_variables["stories"], f, indent=2))
         
               

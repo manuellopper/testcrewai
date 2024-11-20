@@ -11,16 +11,21 @@ success_stories_research_task:
 
     For the research task, take the feedback for each success story included in the following json information into account.  If a success story is valid, keept it. If not, remove it from the list and find another one:    
     {stories}
+
+    Make sure that there are not duplicated success stories.
     
   expected_output: >
-    A structured list of success stories containing:
-    - Short description: Short description of the success story
-    - URL: URL where the success story is described
-    - Company: Name of the implementing company
-    - Integrator: list of software integrators names, if found
-    - Software Manufacturer: list of software manufacturers names, if found.
-      
-    Make sure that there are not duplicated success stories.
+    A structured list of success stories containing each:
+    - Short description: Short description of the success story.Mandatory.
+    - URL: URL where the success story is described. Mandatory.
+    - Company: Name of the implementing company. Mandatory.
+    - Integrator: list of software integrators names, if found. If not found leave it blanck.
+    - Software Manufacturer: list of software manufacturers names, if found. Optional. If not found leave it blanck.
+    
+    - Valid: leave it blanck
+    - Feedback: leave it blanck
+
+    
 
   agent: web_search_expert
 

@@ -8,8 +8,8 @@ class SuccessStory(BaseModel):
     company: str
     integrator: Optional[List[str]] = []
     software_manufacturer: Optional[List[str]] = []    
-    valid: bool
-    feedback: str
+    valid: Optional[bool]
+    feedback: Optional[str]
 
 class SuccessStoriesList(BaseModel):
     stories: List[SuccessStory] = []
