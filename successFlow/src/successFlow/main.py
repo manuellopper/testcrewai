@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from langtrace_python_sdk import langtrace
 import os
-langtrace.init(api_key=os.getenv('LANGTRACE_API_KEY'))
+
 from crewai import Agent, Task, Crew
 from pydantic import BaseModel
 from typing import List, Optional
@@ -13,8 +13,8 @@ from .config import INPUT_VARIABLES, SuccessStoriesList
 from .crews.research_crew.research_crew import ResearchCrew 
 from .crews.validation_crew.validation_crew import ValidationCrew 
 
-
-
+api_key=os.getenv('LANGTRACE_API_KEY')
+langtrace.init(api_key=api_key)
 
 class SuccessStoryFlow(Flow):
 
