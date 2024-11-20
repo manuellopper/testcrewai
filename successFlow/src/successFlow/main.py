@@ -2,7 +2,7 @@
 from langtrace_python_sdk import langtrace
 import os
 langtrace.init(api_key=os.getenv('LANGTRACE_API_KEY'))
-
+from crewai import Agent, Task, Crew
 from pydantic import BaseModel
 from typing import List, Optional
 import json
