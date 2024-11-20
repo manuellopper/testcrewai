@@ -38,7 +38,11 @@ class SuccessStoryFlow(Flow):
     def router_stories_validation(self):
 
         print("##Start router\n") 
-        print(json.dump(self.context_variables["stories"], f, indent=2))
+        print(json.dumps(self.context_variables["stories"], indent=2))
+        result=ValidationCrew().crew().kickoff(self.context_variables).pydantic
+        self.context_variables["stories"] = [story.model_dump() for story in result.stories]
+        print("##End validation \n") 
+        print(json.dumps(self.context_variables["stories"], indent=2))
         valid = all(story['valid'] for story in self.context_variables["stories"])
         
         if valid:
